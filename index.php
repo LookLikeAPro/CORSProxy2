@@ -2,7 +2,7 @@
 header("Access-Control-Allow-Origin: *");
 $query = $_SERVER['QUERY_STRING'];
 $raw_data = file_get_contents($query);
-if(substr($raw_data, 0, 15) == "<methodResponse")
+if(substr($raw_data, 0, 15) == "<methodResponse" || substr($raw_data, 0, 5) == "<?xml")
 {
   $xml = simplexml_load_string($raw_data);
   $json = json_encode($xml);
